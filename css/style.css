@@ -42,7 +42,7 @@ img {
 }
 body {
   font-family: var(--main-font);
-  /* color: var(--text-color-black); */
+  color: var(--text-color-black); 
   font-style: normal;
   font-size: 14px;
 }
@@ -297,9 +297,9 @@ button:hover {
   margin-bottom: 0px;
 }
 .project-wrap {
+  position: relative;
   width: 370px;
 }
-
 .project-card {
   margin-top: 0;
   padding: 20px 24px;
@@ -307,6 +307,7 @@ button:hover {
   border-top: 0;
 }
 .project-wrap:hover {
+  transition: 2500ms cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 .project-title {
@@ -361,7 +362,6 @@ button:hover {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  /* margin: 16px 32px 30px; */
 }
 .social-icons {
   display: flex;
@@ -385,9 +385,6 @@ button:hover {
 .clients {
   margin-top: 50px;
   display: flex;
-  /*align-items: center;*/
-  /* justify-content: center; */
-  /*justify-content: space-between;*/
   gap: 30px;
 }
 .clients-title {
@@ -403,8 +400,6 @@ button:hover {
   height: 92px;
   align-items: center;
   justify-content: center;
-  /*display: block;
-  padding: 16px 32px;*/
   fill: var(--text-color-gray);
 }
 .clients-icon:hover {
@@ -414,7 +409,6 @@ button:hover {
   fill: var(--color-blue);
 }
 .clients-card {
-  /*padding: 16px 32px;*/
   border: 1px solid var(--border-color-gray);
   border-radius: 4px;
 }
@@ -444,3 +438,56 @@ button:hover {
   background-color: var(--text-color-gray);
   fill: var(--text-color-wight);
  }
+ /*overlay*/
+ .project-foto {
+  position: relative;
+  overflow: hidden;
+ }
+ .overlay-card {
+  position: absolute;
+  display: block;
+  padding: 63px 24px;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  background-color:
+  var(--color-blue);
+  opacity: 0;
+  border-radius: 4px;
+  transform: translateY(100%);
+  /*transition: 2500ms cubic-bezier(0.4, 0, 0.2, 1);*/
+ }
+.overlay-text {
+  font-family: var(--main-font);
+  font-size: 18px;
+  color: var(--text-color-wight);
+  line-height: calc(28/18);
+  letter-spacing: 0.03em;
+}
+.project-wrap:hover.overlay-card {
+  transform: translateY(0);
+  transition: 2500ms cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 1;
+}
+/*modal*/
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 528px;
+  height: 581px;
+  border-radius: 4px;
+  background-color:var(--linear-gradient);
+  width: 100%;
+  height:100%;
+}
+.modal {
+  background-color:var(--text-color-wight);
+  max-width: 528px;
+  max-height: 581px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
