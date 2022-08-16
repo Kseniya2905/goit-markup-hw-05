@@ -13,6 +13,7 @@
   --border-color: #eeeeee;
   --border-color-gray:#AFB1B8;
   --linear-gradient: rgba(47, 48, 58, 0.4);
+  --box-shadov-color:0px 4px 4px rgba(0, 0, 0, 0.25)
 }
 *,
 *::before,
@@ -60,7 +61,11 @@ body {
   font-weight: 500;
   font-size: 14px;
   line-height: calc(16 / 14);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.02em;
+  transition-duration:color;
+  transition-timing-function:
+  cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 250ms;
 }
 .nav-link.current {
   color: var(--color-blue);
@@ -93,6 +98,10 @@ body {
   letter-spacing: 0.02em;
   color: var(--text-color-gray);
   fill: var(--text-color-gray);
+  /* transition-duration:var(--text-color-gray); */
+  transition-timing-function:
+  cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 250ms;
 }
 .dark {
   color: var(--logo-color-darck);
@@ -308,7 +317,7 @@ button:hover {
 }
 .project-wrap:hover {
   transition: 2500ms cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  box-shadow:var(--box-shadov-color);
 }
 .project-title {
   font-weight: 700;
@@ -456,7 +465,7 @@ button:hover {
   opacity: 0;
   border-radius: 4px;
   transform: translateY(100%);
-  /*transition: 2500ms cubic-bezier(0.4, 0, 0.2, 1);*/
+  transition: 2500ms cubic-bezier(0.4, 0, 0.2, 1);
  }
 .overlay-text {
   font-family: var(--main-font);
@@ -465,7 +474,7 @@ button:hover {
   line-height: calc(28/18);
   letter-spacing: 0.03em;
 }
-.project-wrap:hover.overlay-card {
+.project-foto:hover.overlay-card {
   transform: translateY(0);
   transition: 2500ms cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 1;
@@ -475,19 +484,37 @@ button:hover {
   position: fixed;
   top: 0;
   left: 0;
-  width: 528px;
-  height: 581px;
-  border-radius: 4px;
-  background-color:var(--linear-gradient);
   width: 100%;
-  height:100%;
+  height: 100%;
+  border-radius: 4px;
+  z-index: 100;
+  background-color:var(--linear-gradient);
+  opacity: 1;
+  transform: opasity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.backdrop.is-hidden {
+  opacity:0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.backdrop.is-hidden.modal {
+transform: scale(0.9) translate(-50%, -50%);
+pointer-events: none;
 }
 .modal {
   background-color:var(--text-color-wight);
-  max-width: 528px;
-  max-height: 581px;
+  width: 528px;
+  height: 581px;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  z-index: 1000;
+  box-shadow:var(--box-shadov-color);
+  border-radius: 4px;
+  transform: translate(-50%, -50%);scale: 1;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.modal-btn {
+  background-color: var(--background-light);
+  border-radius: 4px;
 }
